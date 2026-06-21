@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <meta name="description" content="Quattrominds sp. z o.o. – biuro projektowe specjalizujące się w projektowaniu instalacji budowlanych: sanitarnych, HVAC, elektrycznych i teletechnicznych. Kraków.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,13 +15,21 @@
   <!-- NAWIGACJA -->
   <nav>
     <div class="container nav-inner">
-      <a href="#" class="logo">Quattrominds</a>
-      <ul class="nav-links">
+      <a href="#" class="logo">
+        <img src="logo-icon.png" alt="" class="logo-icon" aria-hidden="true">
+        <span>Quattrominds</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
         <li><a href="#o-firmie">O firmie</a></li>
         <li><a href="#uslugi">Usługi</a></li>
         <li><a href="#realizacje">Realizacje</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
+      <button class="hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
@@ -32,6 +40,31 @@
       <h1>Projektujemy instalacje,<br>które działają.</h1>
       <p class="hero-sub">Sanitarne &nbsp;·&nbsp; HVAC &nbsp;·&nbsp; Elektryczne &nbsp;·&nbsp; Teletechniczne</p>
       <a href="#kontakt" class="btn">Zapytaj o projekt</a>
+    </div>
+  </section>
+
+  <!-- STATYSTYKI -->
+  <!-- Zaktualizuj liczby statystyk (projekty, m2) do aktualnych danych -->
+  <section id="statystyki">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">10+</span>
+          <span class="stat-label">zrealizowanych projektów</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">8 000+ m²</span>
+          <span class="stat-label">łączna dokumentacja</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">2 branże</span>
+          <span class="stat-label">w jednym biurze</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">PIIB</span>
+          <span class="stat-label">uprawnienia projektowe</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -105,7 +138,8 @@
 
         <div class="project-card">
           <p class="project-type">Centrum medyczne</p>
-          <p class="project-meta">~2 400 m² &nbsp;·&nbsp; Małopolska</p>
+          <p class="project-metric">~2 400 m²</p>
+          <p class="project-location">Małopolska</p>
           <p class="project-desc">Pełen zakres branżowy w fazach PB i PT+PW. Koordynacja obu branż oraz nadzór autorski przez cały okres budowy.</p>
           <div class="project-tags">
             <span>Sanitarne + HVAC</span>
@@ -117,7 +151,8 @@
 
         <div class="project-card">
           <p class="project-type">Biurowiec</p>
-          <p class="project-meta">~1 800 m² &nbsp;·&nbsp; Kraków</p>
+          <p class="project-metric">~1 800 m²</p>
+          <p class="project-location">Kraków</p>
           <p class="project-desc">Projekt techniczny i wykonawczy instalacji elektrycznych i teletechnicznych. Koordynacja z dokumentacją architektoniczną i konstrukcyjną.</p>
           <div class="project-tags">
             <span>Elektryka + Teletechnika</span>
@@ -127,7 +162,8 @@
 
         <div class="project-card">
           <p class="project-type">Obiekt hotelowy</p>
-          <p class="project-meta">~3 200 m² &nbsp;·&nbsp; południe Polski</p>
+          <p class="project-metric">~3 200 m²</p>
+          <p class="project-location">południe Polski</p>
           <p class="project-desc">Wszystkie fazy projektowe od koncepcji po projekt wykonawczy. Pełen zakres obu branż instalacyjnych.</p>
           <div class="project-tags">
             <span>Sanitarne + HVAC</span>
@@ -138,7 +174,8 @@
 
         <div class="project-card">
           <p class="project-type">Budynek usługowo-handlowy</p>
-          <p class="project-meta">~900 m² &nbsp;·&nbsp; Kraków</p>
+          <p class="project-metric">~900 m²</p>
+          <p class="project-location">Kraków</p>
           <p class="project-desc">Projekt instalacji sanitarnych i HVAC w fazach PB i PT+PW. Dokumentacja opracowana pod pozwolenie na budowę.</p>
           <div class="project-tags">
             <span>Sanitarne + HVAC</span>
@@ -185,10 +222,32 @@
   <!-- FOOTER -->
   <footer>
     <div class="container footer-inner">
-      <span class="logo">Quattrominds</span>
-      <p>© 2025 Quattrominds sp. z o.o. &nbsp;·&nbsp; ul. Lipowa 3D, 30-702 Kraków &nbsp;·&nbsp; NIP 6793363053</p>
+      <a href="#" class="logo logo--footer">
+        <img src="logo-icon.png" alt="" class="logo-icon logo-icon--footer" aria-hidden="true">
+        <span>Quattrominds</span>
+      </a>
+      <p>© 2026 Quattrominds sp. z o.o. &nbsp;·&nbsp; ul. Lipowa 3D, 30-702 Kraków &nbsp;·&nbsp; NIP 6793363053</p>
     </div>
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('is-open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      hamburger.classList.toggle('is-active', isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.classList.remove('is-active');
+      });
+    });
+  </script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* =============================================
+﻿/* =============================================
    QUATTROMINDS — style.css
    ============================================= */
 
@@ -23,6 +23,7 @@
   --gray-700:   #334155;
   --white:      #ffffff;
   --font:       'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Syne', system-ui, -apple-system, sans-serif;
   --radius:     10px;
   --transition: 0.2s ease;
 }
@@ -38,6 +39,10 @@ body {
   background: var(--white);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
 }
 
 /* ---- CONTAINER ---- */
@@ -65,11 +70,29 @@ nav {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 700;
   font-size: 1.05rem;
   letter-spacing: -0.02em;
   color: var(--navy);
   text-decoration: none;
+}
+
+.logo-icon {
+  height: 32px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.logo--footer {
+  color: var(--white);
+}
+
+.logo-icon--footer {
+  filter: brightness(0) invert(1);
 }
 
 .nav-links {
@@ -88,6 +111,39 @@ nav {
 
 .nav-links a:hover {
   color: var(--blue);
+}
+
+/* ---- HAMBURGER ---- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.hamburger.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ---- HERO ---- */
@@ -109,7 +165,7 @@ nav {
 
 #hero h1 {
   font-size: clamp(2.2rem, 5vw, 3.6rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.12;
   letter-spacing: -0.03em;
   margin-bottom: 20px;
@@ -150,6 +206,41 @@ nav {
 .btn-outline:hover {
   background: var(--blue);
   color: var(--white);
+}
+
+/* ---- STATYSTYKI ---- */
+#statystyki {
+  padding: 52px 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 /* ---- O FIRMIE ---- */
@@ -322,17 +413,29 @@ nav {
 }
 
 .project-type {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 5px;
-  letter-spacing: -0.01em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
 }
 
-.project-meta {
-  font-size: 0.8rem;
-  color: var(--blue);
-  font-weight: 600;
-  margin-bottom: 14px;
+.project-metric {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.project-location {
+  font-size: 0.78rem;
+  color: var(--gray-500);
+  font-weight: 500;
+  margin-bottom: 18px;
   letter-spacing: 0.01em;
 }
 
@@ -416,14 +519,7 @@ footer {
 .footer-inner {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-footer .logo {
-  color: var(--white);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  gap: 12px;
 }
 
 footer p {
@@ -434,12 +530,39 @@ footer p {
 
 /* ---- RESPONSYWNOŚĆ ---- */
 @media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
   .nav-links {
     display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gray-200);
+    flex-direction: column;
+    padding: 20px 28px 28px;
+    gap: 20px;
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
   }
 
   #hero {
     padding: 64px 0 56px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 20px;
   }
 
   .two-col,
@@ -482,5 +605,9 @@ footer p {
 
   .phases-bar {
     padding: 22px 20px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
